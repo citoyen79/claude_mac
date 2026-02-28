@@ -11,13 +11,17 @@ interface Props {
 const columnColors: Record<string, string> = {
   todo: '#E2E8F0',
   'in-progress': '#FEF3C7',
+  hold: '#FEE2E2',
   done: '#D1FAE5',
+  backup: '#E0E7FF',
 }
 
 const columnHeaderColors: Record<string, string> = {
   todo: '#64748B',
   'in-progress': '#D97706',
+  hold: '#DC2626',
   done: '#059669',
+  backup: '#4F46E5',
 }
 
 export function Column({ column, cards, onCardClick, onAddCard }: Props) {

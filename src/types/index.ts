@@ -18,7 +18,7 @@ export interface TodoItem {
   moduleId: string // module ID or 'general'
 }
 
-export type ColumnId = 'todo' | 'in-progress' | 'done'
+export type ColumnId = 'todo' | 'in-progress' | 'hold' | 'done' | 'backup'
 
 export interface Card {
   id: string
@@ -38,5 +38,7 @@ export interface Column {
 export const COLUMNS: Column[] = [
   { id: 'todo', title: '할 일' },
   { id: 'in-progress', title: '진행 중' },
+  { id: 'hold', title: 'Hold' },
   { id: 'done', title: '완료' },
+  { id: 'backup', title: 'Backup' },
 ]
