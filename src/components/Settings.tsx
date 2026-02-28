@@ -85,6 +85,15 @@ function ModulesSettings() {
             module={module}
             onEdit={() => setEditingModule(module)}
             onDelete={() => handleDelete(module.id)}
+            onCopy={() => {
+              dispatch({
+                type: 'ADD_MODULE',
+                payload: {
+                  name: `${module.name}_복사`,
+                  defaultItems: [...module.defaultItems],
+                },
+              })
+            }}
           />
         ))}
         {state.modules.length === 0 && (
@@ -123,14 +132,21 @@ interface ModuleCardProps {
   module: TodoModule
   onEdit: () => void
   onDelete: () => void
+  onCopy: () => void
 }
 
-function ModuleCard({ module, onEdit, onDelete }: ModuleCardProps) {
+function ModuleCard({ module, onEdit, onDelete, onCopy }: ModuleCardProps) {
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
       <div className="flex items-start justify-between mb-3">
         <h3 className="font-bold text-gray-800">{module.name}</h3>
         <div className="flex gap-2 shrink-0 ml-2">
+          <button
+            onClick={onCopy}
+            className="text-sm text-green-500 hover:text-green-700 font-medium"
+          >
+            복사
+          </button>
           <button
             onClick={onEdit}
             className="text-sm text-blue-500 hover:text-blue-700 font-medium"
